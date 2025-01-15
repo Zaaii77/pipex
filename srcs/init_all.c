@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 22:13:03 by lowatell          #+#    #+#             */
-/*   Updated: 2025/01/15 22:53:38 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/01/16 00:22:41 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*get_env(char **env)
 	tab[0] = ft_strjoin(tab[0], "/");
 	if (!tab[0])
 		return (free_tab(tab), NULL);
-	path = ft_strdup(tab[0]);
+	path = ft_strdup(tab[0] + 5);
 	if (!path)
 		return (free_tab(tab), NULL);
 	return (free_tab(tab), path);
