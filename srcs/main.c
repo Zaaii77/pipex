@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:22:32 by lowatell          #+#    #+#             */
-/*   Updated: 2025/01/15 17:23:18 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/01/15 22:27:25 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int main(int ac, char **av, char **env)
 {
+	t_pipex	bag;
+
     parsing(ac, av);
-    for (int i = 0; env[i]; i++)
-        ft_printf("%s\n", env[i]);
+	init_all(av, env, &bag);
 }
