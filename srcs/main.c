@@ -6,14 +6,15 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:22:32 by lowatell          #+#    #+#             */
-/*   Updated: 2025/01/15 14:40:17 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/01/15 17:23:18 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/pipex.h"
 
-int main(int ac, char **av)
+int main(int ac, char **av, char **env)
 {
     parsing(ac, av);
-    
+    for (int i = 0; env[i]; i++)
+        ft_printf("%s\n", env[i]);
 }

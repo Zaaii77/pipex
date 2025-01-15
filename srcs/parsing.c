@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:30:08 by lowatell          #+#    #+#             */
-/*   Updated: 2025/01/15 14:55:21 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/01/15 17:20:55 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int is_file(char **av)
     if (fd == -1)
         return (ft_printf("Can't open %s\n", av[4]), 2);
     close(fd);
-    return (0);
+    return (1);
 }
 
 int parsing(int ac, char **av)

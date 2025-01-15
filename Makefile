@@ -6,12 +6,12 @@
 #    By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/20 13:23:46 by lowatell          #+#    #+#              #
-#    Updated: 2025/01/15 14:34:57 by lowatell         ###   ########.fr        #
+#    Updated: 2025/01/15 15:08:20 by lowatell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -g -Wall -Wextra -Werror
+CFLAGS = -g3 -Wall -Wextra -Werror
 RM = rm -rf
 
 SRC_DIR = srcs
