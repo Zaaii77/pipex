@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:22:32 by lowatell          #+#    #+#             */
-/*   Updated: 2025/01/25 05:41:22 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/01/25 13:49:32 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,5 @@ int main(int ac, char **av, char **env)
 
     if (!parsing(ac, av, env, &bag))
  		return (0);
+	ft_printf("%s\n%s\n%s\n%s\n", bag.cmd1.file, bag.cmd2.file, bag.cmd1.pathcmd, bag.cmd2.pathcmd);
 }
