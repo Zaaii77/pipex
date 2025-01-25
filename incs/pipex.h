@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:11:55 by lowatell          #+#    #+#             */
-/*   Updated: 2025/01/24 17:34:39 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/01/25 14:11:07 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ typedef struct s_cmd
 	char	*file;
 }	t_cmd;
 
-typedef	struct s_pipex
+typedef struct s_pipex
 {
 	char	**path;
 	t_cmd	cmd1;
 	t_cmd	cmd2;
 }	t_pipex;
 
-int parsing(int ac, char **av, char **env, t_pipex *bag);
+int	parsing(int ac, char **av, char **env, t_pipex *bag);
 
 #endif
