@@ -6,11 +6,22 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:30:08 by lowatell          #+#    #+#             */
-/*   Updated: 2025/01/25 14:09:23 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/01/25 15:29:39 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/pipex.h"
+
+int	get_command(t_pipex *bag, char **av)
+{
+	bag->cmd1.cmd = ft_split(av[2], ' ');
+	if (!bag->cmd1.cmd)
+		return (0);
+	bag->cmd2.cmd = ft_split(av[3], ' ');
+	if (!bag->cmd2.cmd)
+		return (free_tab(bag->cmd1.cmd), 0);
+	return (1);
+}
 
 int	init_file(char **av, t_pipex *bag)
 {
@@ -46,7 +57,7 @@ int	get_pathcmd(t_pipex *bag, t_cmd *cmd)
 		tmp = ft_strjoin(bag->path[i], "/");
 		if (!tmp)
 			return (2);
-		tmp = ft_strjoin(tmp, cmd->cmd);
+		tmp = ft_strjoin(tmp, cmd->cmd[0]);
 		if (!tmp)
 			return (free(tmp), 2);
 		if (access(tmp, X_OK) == 0)
@@ -61,22 +72,9 @@ int	get_pathcmd(t_pipex *bag, t_cmd *cmd)
 	return (0);
 }
 
-int	init_cmd(char **av, t_pipex *bag)
-{
-	if (!av[2] || !av[3])
-		return (0);
-	bag->cmd1.cmd = av[2];
-	if (!bag->cmd1.cmd)
-		return (0);
-	bag->cmd2.cmd = av[3];
-	if (!bag->cmd2.cmd)
-		return (0);
-	return (1);
-}
-
 int	init_all(char **av, t_pipex *bag)
 {
-	if (!init_cmd(av, bag))
+	if (!get_command(bag, av))
 		return (0);
 	if (!get_pathcmd(bag, &bag->cmd1))
 		return (0);

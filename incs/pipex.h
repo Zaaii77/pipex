@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:11:55 by lowatell          #+#    #+#             */
-/*   Updated: 2025/01/25 14:11:07 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/01/25 15:25:33 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 typedef struct s_cmd
 {
-	char	*cmd;
+	char	**cmd;
 	char	*pathcmd;
 	char	*file;
 }	t_cmd;
