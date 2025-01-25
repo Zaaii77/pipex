@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:30:08 by lowatell          #+#    #+#             */
-/*   Updated: 2025/01/24 23:11:52 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/01/25 05:34:26 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,11 @@ int	init_all(char **av, t_pipex *bag)
 		return (0);
 	if (!init_cmd(av, bag))
 		return (free(bag->cmd1.file), free(bag->cmd2.file), 0);
-	if (get_pathcmd(bag, &bag->cmd1) && get_pathcmd(bag, &bag->cmd2))
-		return (1);
-	return (0);
+	if (!access(bag->cmd1.cmd, X_OK))
+		get_pathcmd(bag, &bag->cmd1);
+	if (!access(bag->cmd2.cmd, X_OK))
+		get_pathcmd(bag, &bag->cmd2);
+	return (1);
 }
 
 int parsing(int ac, char **av, char **env, t_pipex *bag)
@@ -102,6 +104,5 @@ int parsing(int ac, char **av, char **env, t_pipex *bag)
 	bag->path = path;
 	if (init_all(av, bag))
 		return (1);
-	ft_printf("102\n");
     return (0);
 }
