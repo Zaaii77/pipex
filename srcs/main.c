@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:22:32 by lowatell          #+#    #+#             */
-/*   Updated: 2025/01/31 11:29:43 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/01/31 12:03:52 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 int	main(int ac, char **av, char **env)
 {
-	
+	if (ac == 0)
+		return (0);
+	return (0);
 }
