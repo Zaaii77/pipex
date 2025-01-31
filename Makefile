@@ -6,7 +6,7 @@
 #    By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/20 13:23:46 by lowatell          #+#    #+#              #
-#    Updated: 2025/01/31 11:54:07 by lowatell         ###   ########.fr        #
+#    Updated: 2025/01/31 18:55:13 by lowatell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ $(OBJS_DIR):
 clean:
 	@make clean -C libft --no-print-directory
 	@$(RM) $(OBJS_DIR)
+	@$(RM) infile
 	@echo "$(GREEN)Objects files have been deleted."
 
 fclean: clean
@@ -48,6 +49,7 @@ re: fclean all
 $(NAME): $(OBJS)
 	@make -C libft/ --no-print-directory
 	@mv libft/libft.a $(OBJS_DIR)
+	@touch infile
 	@$(CC) $(CFLAGS) $(OBJS) $(OBJS_DIR)/libft.a -o $(NAME)
 	@echo "$(GREEN)$(NAME) has been compiled."
 
