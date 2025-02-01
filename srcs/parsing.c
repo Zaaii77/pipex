@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:30:08 by lowatell          #+#    #+#             */
-/*   Updated: 2025/01/31 14:23:26 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/02/01 11:21:07 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,21 @@ char	**final_tab(char **tmp, char *file)
 	tab = NULL;
 	while (tmp[i])
 		i++;
-	tab = (char **)malloc(sizeof(char *) * i + 1);
+	tab = (char **)malloc(sizeof(char *) * (i + 2));
 	if (!tab)
 		return (NULL);
-	i = -1;
-	while (tmp[++i])
+	i = 0;
+	while (tmp[i])
 	{
 		tab[i] = ft_strdup(tmp[i]);
 		if (!tab[i])
 			return (free_tab(tab), NULL);
+		i++;
 	}
 	tab[i] = ft_strdup(file);
 	if (!tab[i])
 		return (free_tab(tab), NULL);
-	tab[i + 1] = 0;
+	tab[i + 1] = NULL;
 	return (tab);
 }
 
@@ -70,7 +71,7 @@ char	**access_test(char *str, char *file)
 		if (!tmp)
 			return (NULL);
 		tab = final_tab(tmp, file);
-		return (free(tmp), tmp = NULL, tab);
+		return (free(tmp), tab);
 	}
 	tmp = ft_split(str, ' ');
 	if (!tmp)

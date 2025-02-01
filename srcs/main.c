@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:22:32 by lowatell          #+#    #+#             */
-/*   Updated: 2025/01/31 18:29:30 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/02/01 11:22:25 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,7 @@ int	main(int ac, char **av, char **env)
 	cmd1 = get_path(av[2], env, av[1]);
 	if (!cmd1)
 		return (0);
+	for (int i = 0; cmd1[i]; i++)
+		ft_printf("%s\n", cmd1[i]);
 	return (0);
 }
