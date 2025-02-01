@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:22:32 by lowatell          #+#    #+#             */
-/*   Updated: 2025/02/01 11:22:25 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/02/01 11:42:23 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ int	main(int ac, char **av, char **env)
 		return (0);
 	for (int i = 0; cmd1[i]; i++)
 		ft_printf("%s\n", cmd1[i]);
+	free_tab(cmd1);
 	return (0);
 }

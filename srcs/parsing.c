@@ -6,14 +6,14 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:30:08 by lowatell          #+#    #+#             */
-/*   Updated: 2025/02/01 11:21:07 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/02/01 11:26:46 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/pipex.h"
 
 char	**split_path(char **env)
-{	
+{
 	char	**split_path;
 	int		i;
 
@@ -96,7 +96,7 @@ char	**get_path(char *cmd, char **env, char *file)
 		return (part_path);
 	path = split_path(env);
 	i = -1;
-	while(path[++i])
+	while (path[++i])
 	{
 		tmp = ft_strjoin(path[i], "/");
 		if (!tmp)
