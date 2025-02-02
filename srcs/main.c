@@ -6,23 +6,24 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:22:32 by lowatell          #+#    #+#             */
-/*   Updated: 2025/02/01 11:42:23 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/02/02 16:31:02 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/pipex.h"
 
+void	child_process(char *infile, char *cmd, int pipe_fd[2], char **env)
+{
+
+}
+
+void	child_process2(char *outfile, char *cmd, int pipe_fd[2], char **env)
+{
+
+}
+
 int	main(int ac, char **av, char **env)
 {
-	char	**cmd1;
 
-	if (ac == 0)
-		return (0);
-	cmd1 = get_path(av[2], env, av[1]);
-	if (!cmd1)
-		return (0);
-	for (int i = 0; cmd1[i]; i++)
-		ft_printf("%s\n", cmd1[i]);
-	free_tab(cmd1);
 	return (0);
 }
