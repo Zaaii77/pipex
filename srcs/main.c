@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 12:59:10 by lowatell          #+#    #+#             */
-/*   Updated: 2025/02/08 13:27:59 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/02/09 14:03:11 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,11 @@ int	main(int ac, char **av, char **env)
 	int	pfd[2];
 	int	pid;
 
-	if (ac != 5)
+	if (ac < 5)
 	{
 		ft_printf("Error\nWrong amount of arguments.\n");
 		ft_printf("Ex: ./pipex <file1> <cmd1> <cmd2> <file2>\n");
-		exit(1);
+		exit(127);
 	}
 	if (pipe(pfd) == -1)
 		return (ft_printf("Pipe error\n"), 2);
@@ -83,6 +83,5 @@ int	main(int ac, char **av, char **env)
 	if (pid == 0)
 		child(av, env, pfd);
 	parent(av, env, pfd);
-	ft_printf("big test bg");
 	return (0);
 }
