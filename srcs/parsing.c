@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 13:10:36 by lowatell          #+#    #+#             */
-/*   Updated: 2025/02/06 20:17:53 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:01:13 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ char	*find_path(char *av, char **path)
 	char	*ttmp;
 
 	i = -1;
+	tmp = NULL;
 	while (path[++i])
 	{
+		free(tmp);
 		tmp = ft_strjoin(path[i], "/");
 		if (!tmp)
 			return (NULL);
@@ -54,9 +56,10 @@ char	*find_path(char *av, char **path)
 		free(tmp);
 		if (access(ttmp, X_OK) == 0)
 			return (ttmp);
+		tmp = ft_strdup(ttmp);
 		free(ttmp);
 	}
-	return (NULL);
+	return (av);
 }
 
 char	**get_cmd(char *av, char **env)
