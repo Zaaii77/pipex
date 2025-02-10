@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 13:10:36 by lowatell          #+#    #+#             */
-/*   Updated: 2025/02/10 15:01:13 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/02/10 17:39:48 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,23 +43,23 @@ char	*find_path(char *av, char **path)
 	char	*ttmp;
 
 	i = -1;
-	tmp = NULL;
 	while (path[++i])
 	{
-		free(tmp);
 		tmp = ft_strjoin(path[i], "/");
 		if (!tmp)
-			return (NULL);
+			exit(2);
 		ttmp = ft_strjoin(tmp, av);
 		if (!ttmp)
-			return (free(tmp), NULL);
+		{
+			free(tmp);
+			exit(2);
+		}
 		free(tmp);
 		if (access(ttmp, X_OK) == 0)
 			return (ttmp);
-		tmp = ft_strdup(ttmp);
 		free(ttmp);
 	}
-	return (av);
+	return (NULL);
 }
 
 char	**get_cmd(char *av, char **env)
@@ -69,14 +69,21 @@ char	**get_cmd(char *av, char **env)
 
 	cmd = ft_split(av, ' ');
 	if (!cmd)
-		return (NULL);
+		exit(2);
 	if (access(cmd[0], X_OK) == 0)
 		return (cmd);
 	path = get_path(env);
 	if (!path)
-		return (free_tab(cmd), NULL);
+	{
+		free_tab(cmd);
+		exit(2);
+	}
 	cmd[0] = find_path(cmd[0], path + 5);
 	if (!cmd[0])
-		return (free_tab(cmd), free_tab(path), NULL);
+	{
+		free_tab(cmd);
+		free_tab(path);
+		exit(2);
+	}
 	return (free_tab(path), cmd);
 }
