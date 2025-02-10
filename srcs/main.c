@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 12:59:10 by lowatell          #+#    #+#             */
-/*   Updated: 2025/02/10 18:28:03 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/02/10 18:38:05 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	parent(char **av, char **env, int *pfd)
 
 	fd = open(av[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	if (fd == -1)
-		exit(2);
+		exit(1);
 	dup2(fd, STDOUT_FILENO);
 	close(fd);
 	dup2(pfd[0], STDIN_FILENO);
@@ -45,7 +45,7 @@ void	child(char **av, char **env, int *pfd)
 
 	fd = open(av[1], O_RDONLY, 0777);
 	if (fd == -1)
-		exit(2);
+		exit(1);
 	dup2(fd, STDIN_FILENO);
 	close(fd);
 	dup2(pfd[1], STDOUT_FILENO);
