@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 13:10:36 by lowatell          #+#    #+#             */
-/*   Updated: 2025/02/10 18:37:14 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/02/10 19:28:30 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ char	**get_cmd(char *av, char **env)
 	char	**cmd;
 	char	**path;
 
-	if (!av || !av[0])
-		return (NULL);
 	cmd = ft_split(av, ' ');
 	if (!cmd)
 		exit(2);
@@ -82,10 +80,6 @@ char	**get_cmd(char *av, char **env)
 	}
 	cmd[0] = find_path(cmd[0], path + 5);
 	if (!cmd[0])
-	{
-		free_tab(cmd);
 		free_tab(path);
-		exit(2);
-	}
 	return (free_tab(path), cmd);
 }

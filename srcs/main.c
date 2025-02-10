@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 12:59:10 by lowatell          #+#    #+#             */
-/*   Updated: 2025/02/10 18:38:05 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/02/10 19:08:30 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	parent(char **av, char **env, int *pfd)
 	char	**cmd;
 	int		fd;
 
+	if (!av[3] || !av[3][0])
+		exit(1);
 	fd = open(av[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	if (fd == -1)
 		exit(1);
@@ -31,11 +33,9 @@ void	parent(char **av, char **env, int *pfd)
 	dup2(pfd[0], STDIN_FILENO);
 	close_fds(pfd);
 	cmd = get_cmd(av[3], env);
-	if (execve(cmd[0], cmd, env) == -1)
-	{
-		free_tab(cmd);
-		exit(127);
-	}
+	execve(cmd[0], cmd, env);
+	free_tab(cmd);
+	exit(1);
 }
 
 void	child(char **av, char **env, int *pfd)
@@ -43,6 +43,8 @@ void	child(char **av, char **env, int *pfd)
 	char	**cmd;
 	int		fd;
 
+	if (!av[2] || !av[2][0])
+		exit(1);
 	fd = open(av[1], O_RDONLY, 0777);
 	if (fd == -1)
 		exit(1);
@@ -51,11 +53,9 @@ void	child(char **av, char **env, int *pfd)
 	dup2(pfd[1], STDOUT_FILENO);
 	close_fds(pfd);
 	cmd = get_cmd(av[2], env);
-	if (execve(cmd[0], cmd, env) == -1)
-	{
-		free_tab(cmd);
-		exit(127);
-	}
+	execve(cmd[0], cmd, env);
+	free_tab(cmd);
+	exit(1);
 }
 
 int	main(int ac, char **av, char **env)
@@ -80,7 +80,7 @@ int	main(int ac, char **av, char **env)
 	if (pid2 == 0)
 		parent(av, env, pfd);
 	close_fds(pfd);
-	waitpid(pid, &status, 0);
+	waitpid(pid, 0, 0);
 	waitpid(pid2, &status, 0);
 	if (WIFEXITED(status))
 		return (WEXITSTATUS(status));
