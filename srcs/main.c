@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 12:59:10 by lowatell          #+#    #+#             */
-/*   Updated: 2025/02/10 19:08:30 by lowatell         ###   ########.fr       */
+/*   Updated: 2025/02/11 00:01:59 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	parent(char **av, char **env, int *pfd)
 	cmd = get_cmd(av[3], env);
 	execve(cmd[0], cmd, env);
 	free_tab(cmd);
-	exit(1);
+	exit(127);
 }
 
 void	child(char **av, char **env, int *pfd)
