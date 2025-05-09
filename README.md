@@ -58,7 +58,6 @@ $ cat outfile
 
 ## Notes
 - The project uses `libft` for utility functions.
-- Bonus mode supports multiple commands and `here_doc`.
 
 ## License
 This project is licensed under the MIT License.
